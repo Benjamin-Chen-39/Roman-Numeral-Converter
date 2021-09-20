@@ -32,6 +32,12 @@ namespace Roman_Numeral_Converter
                     case 'I':
                         total += 1;
                         break;
+                    default:
+                        {
+                            Console.WriteLine("Invalid Roman numeral character detected. Returning 0.");
+                            total = 0;
+                            return total;
+                        }
                 }
             }
 
@@ -50,130 +56,139 @@ namespace Roman_Numeral_Converter
 
             return total;
         }
-
         public static string IntToRomanNumeral(int number)
         {
             string RomanNumeral = "";
             int digit = 0;
-            //thousands digit logic
-            digit = number / 1000;
-            if (digit != 0)
-            {
-                for (int i = 0; i < digit; i++)
-                {
-                    RomanNumeral += "M";
-                }
-                number = number - digit * 1000;
-            }
-            //hundreds digit logic
-            digit = number / 100;
-            if (digit != 0)
-            {
-                switch (digit)
-                {
-                    case 1:
-                        RomanNumeral += "C";
-                        break;
-                    case 2:
-                        RomanNumeral += "CC";
-                        break;
-                    case 3:
-                        RomanNumeral += "CCC";
-                        break;
-                    case 4:
-                        RomanNumeral += "CD";
-                        break;
-                    case 5:
-                        RomanNumeral += "D";
-                        break;
-                    case 6:
-                        RomanNumeral += "DC";
-                        break;
-                    case 7:
-                        RomanNumeral += "DCC";
-                        break;
-                    case 8:
-                        RomanNumeral += "DCCC";
-                        break;
-                    case 9:
-                        RomanNumeral += "CM";
-                        break;
-                }
 
-                number = number - digit * 100;
+            if (number < 1 || number > 3999)
+            {
+                RomanNumeral = "is not in the valid Roman Numeral range of 1-3999 >:(";
+                return RomanNumeral;
             }
 
-            //tens digit logic
-            digit = number / 10;
-            if (digit != 0)
+            else
             {
-                switch (digit)
+                //thousands digit logic
+                digit = number / 1000;
+                if (digit != 0)
                 {
-                    case 1:
-                        RomanNumeral += "X";
-                        break;
-                    case 2:
-                        RomanNumeral += "XX";
-                        break;
-                    case 3:
-                        RomanNumeral += "XXX";
-                        break;
-                    case 4:
-                        RomanNumeral += "XL";
-                        break;
-                    case 5:
-                        RomanNumeral += "L";
-                        break;
-                    case 6:
-                        RomanNumeral += "LX";
-                        break;
-                    case 7:
-                        RomanNumeral += "LXX";
-                        break;
-                    case 8:
-                        RomanNumeral += "LXXX";
-                        break;
-                    case 9:
-                        RomanNumeral += "XC";
-                        break;
+                    for (int i = 0; i < digit; i++)
+                    {
+                        RomanNumeral += "M";
+                    }
+                    number = number - digit * 1000;
                 }
-                number = number - digit * 10;
-            }
-
-            //ones digit logic
-            if (number != 0)
-            {
-                switch (number)
+                //hundreds digit logic
+                digit = number / 100;
+                if (digit != 0)
                 {
-                    case 1:
-                        RomanNumeral += "I";
-                        break;
-                    case 2:
-                        RomanNumeral += "II";
-                        break;
-                    case 3:
-                        RomanNumeral += "III";
-                        break;
-                    case 4:
-                        RomanNumeral += "IV";
-                        break;
-                    case 5:
-                        RomanNumeral += "V";
-                        break;
-                    case 6:
-                        RomanNumeral += "VI";
-                        break;
-                    case 7:
-                        RomanNumeral += "VII";
-                        break;
-                    case 8:
-                        RomanNumeral += "VIII";
-                        break;
-                    case 9:
-                        RomanNumeral += "IX";
-                        break;
+                    switch (digit)
+                    {
+                        case 1:
+                            RomanNumeral += "C";
+                            break;
+                        case 2:
+                            RomanNumeral += "CC";
+                            break;
+                        case 3:
+                            RomanNumeral += "CCC";
+                            break;
+                        case 4:
+                            RomanNumeral += "CD";
+                            break;
+                        case 5:
+                            RomanNumeral += "D";
+                            break;
+                        case 6:
+                            RomanNumeral += "DC";
+                            break;
+                        case 7:
+                            RomanNumeral += "DCC";
+                            break;
+                        case 8:
+                            RomanNumeral += "DCCC";
+                            break;
+                        case 9:
+                            RomanNumeral += "CM";
+                            break;
+                    }
+
+                    number = number - digit * 100;
                 }
 
+                //tens digit logic
+                digit = number / 10;
+                if (digit != 0)
+                {
+                    switch (digit)
+                    {
+                        case 1:
+                            RomanNumeral += "X";
+                            break;
+                        case 2:
+                            RomanNumeral += "XX";
+                            break;
+                        case 3:
+                            RomanNumeral += "XXX";
+                            break;
+                        case 4:
+                            RomanNumeral += "XL";
+                            break;
+                        case 5:
+                            RomanNumeral += "L";
+                            break;
+                        case 6:
+                            RomanNumeral += "LX";
+                            break;
+                        case 7:
+                            RomanNumeral += "LXX";
+                            break;
+                        case 8:
+                            RomanNumeral += "LXXX";
+                            break;
+                        case 9:
+                            RomanNumeral += "XC";
+                            break;
+                    }
+                    number = number - digit * 10;
+                }
+
+                //ones digit logic
+                if (number != 0)
+                {
+                    switch (number)
+                    {
+                        case 1:
+                            RomanNumeral += "I";
+                            break;
+                        case 2:
+                            RomanNumeral += "II";
+                            break;
+                        case 3:
+                            RomanNumeral += "III";
+                            break;
+                        case 4:
+                            RomanNumeral += "IV";
+                            break;
+                        case 5:
+                            RomanNumeral += "V";
+                            break;
+                        case 6:
+                            RomanNumeral += "VI";
+                            break;
+                        case 7:
+                            RomanNumeral += "VII";
+                            break;
+                        case 8:
+                            RomanNumeral += "VIII";
+                            break;
+                        case 9:
+                            RomanNumeral += "IX";
+                            break;
+                    }
+
+                }
             }
             return RomanNumeral;
         }
@@ -191,7 +206,10 @@ namespace Roman_Numeral_Converter
             Console.WriteLine($"DCCLXXXIX converted to integer: {num789}");
             Console.WriteLine($"MDCCLXXVI converted to integer: {num1776}");
             Console.WriteLine($"MCMXII converted to integer: {num1912}");
-            Console.WriteLine($"MMXXI converted to integer: {num2021}");
+            Console.WriteLine($"MMXXI converted to integer: {num2021}\n");
+
+            int numError = RomanNumeralToInt("ABM");
+            Console.WriteLine($"ABD converted to integer: {numError}");
 
             string romanNumIV = IntToRomanNumeral(4);
             string romanNumX = IntToRomanNumeral(10);
@@ -206,6 +224,11 @@ namespace Roman_Numeral_Converter
             Console.WriteLine($"1776 converted to Roman Numerals: {romanNumMDCCLXXVI}");
             Console.WriteLine($"1912 converted to Roman Numerals: {romanNumMCMXII}");
             Console.WriteLine($"2021 converted to Roman Numerals: {romanNumMMXXI}");
+
+            string romanNumError1 = IntToRomanNumeral(0);
+            string romanNumError2 = IntToRomanNumeral(4000);
+            Console.WriteLine($"\n0 {romanNumError1}");
+            Console.WriteLine($"4000 {romanNumError2}");
         }
     }
 }

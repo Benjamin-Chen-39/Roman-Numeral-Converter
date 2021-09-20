@@ -218,7 +218,7 @@ namespace Roman_Numeral_Converter
             string romanNumMCMXII = IntToRomanNumeral(1912);
             string romanNumMMXXI = IntToRomanNumeral(2021);
 
-            Console.WriteLine($"\n4 converted to integers: {romanNumIV}");
+            Console.WriteLine($"\n4 converted to integer: {romanNumIV}");
             Console.WriteLine($"10 converted to Roman Numerals: {romanNumX}");
             Console.WriteLine($"789 converted to Roman Numerals: {romanNumDCCLXXXIX}");
             Console.WriteLine($"1776 converted to Roman Numerals: {romanNumMDCCLXXVI}");

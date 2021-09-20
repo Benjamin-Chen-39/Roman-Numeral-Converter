@@ -9,33 +9,36 @@ namespace Roman_Numeral_Converter
             int total = 0;
             foreach (char numeral in romanNumeral)
             {
-                if (numeral == 'M')
+                switch (numeral)
                 {
-                    total += 1000;
-                }
-                else if (numeral == 'D')
-                {
-                    total += 500;
-                }
-                else if (numeral == 'C')
-                {
-                    total += 100;
-                }
-                else if (numeral == 'L')
-                {
-                    total += 50;
-                }
-                else if (numeral == 'X')
-                {
-                    total += 10;
-                }
-                else if (numeral == 'V')
-                {
-                    total += 5;
-                }
-                else if (numeral == 'I')
-                {
-                    total += 1;
+                    case 'M':
+                        total += 1000;
+                        break;
+
+                    case 'D':
+                        total += 500;
+                        break;
+
+                    case 'C':
+                        total += 100;
+                        break;
+
+                    case 'L':
+                        total += 50;
+                        break;
+
+                    case 'X':
+                        total += 10;
+                        break;
+
+                    case 'V':
+                        total += 5;
+                        break;
+
+                    case 'I':
+                        total += 1;
+                        break;
+
                 }
             }
 
@@ -59,7 +62,7 @@ namespace Roman_Numeral_Converter
         {
             string RomanNumeral = "";
             int digit = 0;
-            //thousands logic
+            //thousands digit logic
             digit = number / 1000;
             if (digit != 0)
             {
@@ -69,118 +72,115 @@ namespace Roman_Numeral_Converter
                 }
                 number = number - digit * 1000;
             }
-            //hundreds logic
+            //hundreds digit logic
             digit = number / 100;
             if (digit != 0)
             {
-                if (digit >= 1 && digit <= 3)
+                switch (digit)
                 {
-                    for (int i = 0; i < digit; i++)
-                    {
+                    case 1:
                         RomanNumeral += "C";
-                    }
-                }
-
-                if (digit == 4)
-                {
-                    RomanNumeral += "CD";
-                }
-
-                else if (digit == 5)
-                {
-                    RomanNumeral += "D";
-                }
-
-                else if (digit >= 6 && digit <= 8)
-                {
-                    RomanNumeral += "D";
-                    for (int i = 0; i < digit - 5; i++)
-                    {
-                        RomanNumeral += "C";
-                    }
-                }
-
-                else if (digit == 9)
-                {
-                    RomanNumeral += "CM";
+                        break;
+                    case 2:
+                        RomanNumeral += "CC";
+                        break;
+                    case 3:
+                        RomanNumeral += "CCC";
+                        break;
+                    case 4:
+                        RomanNumeral += "CD";
+                        break;
+                    case 5:
+                        RomanNumeral += "D";
+                        break;
+                    case 6:
+                        RomanNumeral += "DC";
+                        break;
+                    case 7:
+                        RomanNumeral += "DCC";
+                        break;
+                    case 8:
+                        RomanNumeral += "DCCC";
+                        break;
+                    case 9:
+                        RomanNumeral += "CM";
+                        break;
                 }
 
                 number = number - digit * 100;
             }
 
-            //tens logic
+            //tens digit logic
             digit = number / 10;
             if (digit != 0)
             {
-                if (digit >= 1 && digit <= 3)
+                switch (digit)
                 {
-                    for (int i = 0; i < digit; i++)
-                    {
+                    case 1:
                         RomanNumeral += "X";
-                    }
+                        break;
+                    case 2:
+                        RomanNumeral += "XX";
+                        break;
+                    case 3:
+                        RomanNumeral += "XXX";
+                        break;
+                    case 4:
+                        RomanNumeral += "XL";
+                        break;
+                    case 5:
+                        RomanNumeral += "L";
+                        break;
+                    case 6:
+                        RomanNumeral += "LX";
+                        break;
+                    case 7:
+                        RomanNumeral += "LXX";
+                        break;
+                    case 8:
+                        RomanNumeral += "LXXX";
+                        break;
+                    case 9:
+                        RomanNumeral += "XC";
+                        break;
                 }
-
-                if (digit == 4)
-                {
-                    RomanNumeral += "XL";
-                }
-
-                if (digit == 5)
-                {
-                    RomanNumeral += "L";
-                }
-
-                if (digit >= 6 && digit <= 8)
-                {
-                    RomanNumeral += "L";
-                    for (int i = 0; i < digit - 5; i++)
-                    {
-                        RomanNumeral += "X";
-                    }
-                }
-
-                if (digit == 9)
-                {
-                    RomanNumeral += "XC";
-                }
-
                 number = number - digit * 10;
             }
 
-            //ones logic
+            //ones digit logic
             if (number != 0)
             {
-                if (number >= 1 && number <= 3)
+                switch (number)
                 {
-                    for (int i = 0; i < number; i++)
-                    {
+                    case 1:
                         RomanNumeral += "I";
-                    }
+                        break;
+                    case 2:
+                        RomanNumeral += "II";
+                        break;
+                    case 3:
+                        RomanNumeral += "III";
+                        break;
+                    case 4:
+                        RomanNumeral += "IV";
+                        break;
+                    case 5:
+                        RomanNumeral += "V";
+                        break;
+                    case 6:
+                        RomanNumeral += "VI";
+                        break;
+                    case 7:
+                        RomanNumeral += "VII";
+                        break;
+                    case 8:
+                        RomanNumeral += "VIII";
+                        break;
+                    case 9:
+                        RomanNumeral += "IX";
+                        break;
                 }
 
-                if (number == 4)
-                {
-                    RomanNumeral += "IV";
-                }
-
-                if (number == 5)
-                {
-                    RomanNumeral += "V";
-                }
-
-                if (number >= 6 && number <= 8)
-                {
-                    RomanNumeral += "V";
-                    for (int i = 0; i < number - 5; i++)
-                    {
-                        RomanNumeral += "I";
-                    }
-                }
-
-                if (number == 9)
-                {
-                    RomanNumeral += "IX";
-                }
             }
             return RomanNumeral;
         }
@@ -213,8 +213,6 @@ namespace Roman_Numeral_Converter
             Console.WriteLine($"1776 converted to Roman Numerals: {romanNumMDCCLXXVI}");
             Console.WriteLine($"1912 converted to Roman Numerals: {romanNumMCMXII}");
             Console.WriteLine($"2021 converted to Roman Numerals: {romanNumMMXXI}");
-
-
         }
     }
 }
